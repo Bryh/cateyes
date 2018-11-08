@@ -13,12 +13,13 @@
 
 <script>
 import MovieItem from "./MovieItem.vue"
+
 export default {
     props:["date","cominglist"],
     components: {
          MovieItem,
-        
-    }
+    },
+    
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="HomeNow">
+    <div ref="Nowscroll" class="HomeNow">
         <section class="movies-list">
             <movie-item
                 v-for = "movie in movies "
@@ -13,6 +13,7 @@
 
 <script>
 import MovieItem from "./MovieItem.vue"
+import BetterScroll from "better-scroll"
 export default {
     data (){
         return {
@@ -28,8 +29,16 @@ export default {
         
         
     },
+    mounted () {
+        this.$nextTick(() => {
+        this.scroll = new BetterScroll(this.$refs.Nowscroll, {})
+      })
+    },
     components: {
         MovieItem
+    },
+    methods: {
+       
     }
 
 }
@@ -40,7 +49,7 @@ export default {
 .HomeNow{
     margin-top: 2.52rem;
     width: 100%;
-    height: 100%;
+    height: 16.613333rem;
     overflow: hidden;
     .movies-list{
         box-sizing: border-box;

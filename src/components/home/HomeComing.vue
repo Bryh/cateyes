@@ -1,18 +1,23 @@
 <template>
-    <div class="HomeComing">
-        <home-mostexpected></home-mostexpected>
-        <expetced-cominglist
-            v-for = "date in datelist"
-            :key = "date"
-            :date = "date"
-            :cominglist = "cominglist"
-        ></expetced-cominglist>
+    <div ref="comingscroll" class="HomeComing">
+        <div  class="coming-content">
+            <home-mostexpected></home-mostexpected>
+            <expetced-cominglist
+                v-for = "date in datelist"
+                :key = "date"
+                :date = "date"
+                :cominglist = "cominglist"
+            ></expetced-cominglist>
+
+        </div>
+        
     </div>
 </template>
 
 <script>
 import HomeMostexpected from "./HomeMostexpected.vue"
 import ExpetcedCominglist from "./ExpetcedComingList.vue"
+import BetterScroll from "better-scroll"
 export default {
     data () {
         return {
@@ -33,7 +38,11 @@ export default {
         this.handleDatelist()
         
     },
-    
+    mounted () {
+        this.$nextTick(() => {
+        this.scroll = new BetterScroll(this.$refs.comingscroll, {})
+      })
+    },
     methods: {
         handleDatelist (){
             let date = [];
@@ -53,6 +62,9 @@ export default {
     padding-right: .4rem;
     width: 100%;
     margin-top: 2.52rem;
+    height: 14rem;
+    .coming-content{
 
+    }
 }
 </style>

@@ -28,9 +28,9 @@
                      
                 </div>
                 <div class="movie-btn">
-                        <span v-if = "movie.globalReleased" class="buy-btn">购票</span>
-                        <span   v-else class="prebuy-btn">预售</span>
-                        <!-- <span   v-else class="prebuy-btn">预售</span> -->
+                        <span v-if = "movie.showst == 3" class="buy-btn">购票</span>
+                        <span v-if = "movie.showst == 4"   class="prebuy-btn">预售</span>
+                        <span v-if = "movie.showst == 1" class="want-see">想看</span>
                 </div>
                
             </div>
@@ -127,6 +127,22 @@ export default {
                     text-align: center;
                     // box-sizing: border-box;
                     background-color: #3c9fe6;
+                    color: #fff;
+                    border-radius: 4px;
+                    white-space: nowrap;
+                    font-size: .32rem;
+                    
+                    cursor: pointer;
+            }
+            .want-see{
+                    display: block;
+                     width: 1.253333rem;
+                    height: .72rem;
+                    // margin-top: .8rem;
+                    line-height: .746667rem;
+                    text-align: center;
+                    // box-sizing: border-box;
+                    background-color: #faaf00;
                     color: #fff;
                     border-radius: 4px;
                     white-space: nowrap;
