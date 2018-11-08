@@ -5,6 +5,17 @@ function resolve (url) {
 
 
 module.exports = { 
+    devServer:{
+        proxy: {
+            '/ce': {
+              target: 'https://m.maoyan.com/',
+              changeOrigin: true,
+              pathRewrite: {
+                '^/ce': ''
+              }
+            }
+          }
+    },
     
     chainWebpack (config)  {
         config
@@ -14,6 +25,7 @@ module.exports = {
             .set("@com", resolve("src/components"))
             .set("@libs", resolve("src/libs"))
             .set("@css", resolve("src/css"))
+            .set("@utils", resolve("src/utils"))
 
     }
  }

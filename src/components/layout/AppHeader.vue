@@ -23,10 +23,10 @@ export default {
     methods: {
         getTitle (to){
             let _to = to || this.$route
-            
-            
             switch(_to.name){
-                case "home": this.isIconShow = false; return "猫眼电影"; break;
+                case "home": 
+                case "now": 
+                case "coming": this.isIconShow = false; return "猫眼电影"; break; 
                 case "cinema": this.isIconShow = false; return "影院"; break;
                 case "user": this.isIconShow = true; return "猫眼电影"; break;
             }
@@ -43,6 +43,9 @@ export default {
     height: 1.346667rem;
     line-height: 1.346667rem;   
     display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
     .fa{
         margin-left: .266667rem;
     }

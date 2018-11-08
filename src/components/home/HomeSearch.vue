@@ -4,8 +4,8 @@
             <i class="fa fa-angle-down"></i>
         </span>
         <span class="isnow-wrapper">
-            <span class="isnow">正在热映</span>
-            <span class="isnow">即将上映</span>
+            <router-link tag="span" :to="{ name: 'now'}"  class="isnow">正在热映</router-link>
+            <router-link tag="span" :to="{ name: 'coming'}"  class="isnow">即将上映</router-link>
         </span>
         
         <span class="fasearch">
@@ -27,6 +27,8 @@ export default {};
   justify-content: space-between;
   top: 1.346667rem;
   border-bottom: 1px solid #ccc;
+  background: #fff;
+  z-index: 9999;
   .location {
     padding-left: 0.4rem;
     font-size: 0.4rem;
@@ -46,6 +48,10 @@ export default {};
       font-weight: 700;
       line-height:1.173333rem;
       height:1.173333rem;
+    }
+    .router-link-exact-active{
+      color: #ef4238;
+      border-bottom: #ef4238 2px solid;
     }
   }
 

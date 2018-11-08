@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import HomeNow from '@com/home/HomeNow.vue'
+import HomeComing from '@com/home/HomeComing.vue'
 import Cinema from './views/Cinema.vue'
 import User from './views/User.vue'
 
@@ -11,10 +13,23 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
-      alias: "/home"
+      redirect: "/home/now",
+      alias:"/",
+      children: [
+        {
+          path: "now",
+          name: "now",
+          component: HomeNow,
+        },
+        {
+          path: "coming",
+          name: "coming",
+          component: HomeComing,
+        }
+      ]
     },
     {
       path: '/cinema',
