@@ -40,7 +40,9 @@ export default {
     },
     mounted () {
         this.$nextTick(() => {
-        this.scroll = new BetterScroll(this.$refs.comingscroll, {})
+        this.scroll = new BetterScroll(this.$refs.comingscroll, {
+            click: true
+        })
       })
     },
     methods: {

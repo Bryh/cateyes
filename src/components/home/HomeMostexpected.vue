@@ -2,7 +2,6 @@
     <div  class="HomeMostexpected">
         <p class="recent-expected">近期最受期待</p>
         <div ref="expetcedscroll" class="expetced-content">
-             
             <div class="expected-list">
                 <expected-item
                 v-for="movie in expectedmovie"
@@ -37,7 +36,8 @@ export default {
         this.$nextTick(() => {
         this.scroll = new BetterScroll(this.$refs.expetcedscroll, {
             scrollX:true,
-            eventPassthrough:'vertical' 
+            eventPassthrough:'vertical' ,
+            click: true
         })
       })
     },
@@ -61,11 +61,10 @@ export default {
         color: #333;
     }
     .expetced-content{
-        
         width: 9.146667rem;
         .expected-list{
             display: inline-block;
-            overflow: scroll;
+            // overflow: scroll;
             white-space: nowrap;
         }
     }

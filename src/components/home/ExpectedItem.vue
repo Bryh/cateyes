@@ -1,7 +1,7 @@
 <template>
     <div class="ExpectedItem">
         <div class="expcted-imgbox">
-            <img :src="movie.img | imgurl" alt="">
+            <img :src="movie.img | imgurl( '128.180' ) " alt="">
             <span class="expected-wish">
                 <span class="expected-wish-num">{{movie.wish}}</span><span>人想看</span>
             </span>

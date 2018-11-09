@@ -8,7 +8,7 @@ module.exports = {
     devServer:{
         proxy: {
             '/ce': {
-              target: 'https://m.maoyan.com/',
+              target: 'http://m.maoyan.com/',
               changeOrigin: true,
               pathRewrite: {
                 '^/ce': ''

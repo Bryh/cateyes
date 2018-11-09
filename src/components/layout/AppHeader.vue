@@ -1,6 +1,6 @@
 <template>
     <div class="AppHeader">
-        <i v-if= "isIconShow" class="fa fa-angle-left fa-3x"></i>
+        <i @click= "back" v-if= "isIconShow" class="fa fa-angle-left fa-2x"></i>
         <span class="title">{{ title }}</span>
     </div>
 </template>
@@ -27,9 +27,13 @@ export default {
                 case "home": 
                 case "now": 
                 case "coming": this.isIconShow = false; return "猫眼电影"; break; 
+                case "detail": this.isIconShow = true;  return _to.query.name; break;
                 case "cinema": this.isIconShow = false; return "影院"; break;
                 case "user": this.isIconShow = true; return "猫眼电影"; break;
             }
+        },
+        back (){
+            window.history.go(-1)
         }
     }
 }
@@ -48,6 +52,7 @@ export default {
     z-index: 9999;
     .fa{
         margin-left: .266667rem;
+        margin-top: .213333rem;
     }
     .title{
         margin-left: 1.066667rem;

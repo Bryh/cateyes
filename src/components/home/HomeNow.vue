@@ -31,7 +31,9 @@ export default {
     },
     mounted () {
         this.$nextTick(() => {
-        this.scroll = new BetterScroll(this.$refs.Nowscroll, {})
+        this.scroll = new BetterScroll(this.$refs.Nowscroll, {
+            click: true,
+        })
       })
     },
     components: {

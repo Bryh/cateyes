@@ -1,7 +1,7 @@
 <template>
     <div class="MovieItem">
-            <div class="movie-item">
-                <div class="img-box"><img :src="movie.img | imgurl" alt=""></div>
+             <router-link  tag="div" :to = "{name:'detail', params:{id: movie.id}, query:{name: movie.nm}}" class="movie-item">
+                <div class="img-box"><img :src="movie.img | imgurl( '128.180' )" alt=""></div>
                 <div class="movie-info">
                     <div class="movie-title">
                         <div class="title">{{movie.nm}}</div>
@@ -33,7 +33,7 @@
                         <span v-if = "movie.showst == 1" class="want-see">想看</span>
                 </div>
                
-            </div>
+            </router-link>
     </div>
 </template>
 

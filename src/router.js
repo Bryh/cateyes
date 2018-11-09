@@ -5,6 +5,7 @@ import HomeNow from '@com/home/HomeNow.vue'
 import HomeComing from '@com/home/HomeComing.vue'
 import Cinema from './views/Cinema.vue'
 import User from './views/User.vue'
+import Detail from './views/Detail.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: User
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
+      component: Detail
     }
   ]
 })
