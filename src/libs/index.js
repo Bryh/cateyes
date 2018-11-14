@@ -13,6 +13,11 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
  
 // require styles
 import 'swiper/dist/css/swiper.css'
+
+//引入mint-uicss
+
+import 'mint-ui/lib/style.css'
+
  
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 

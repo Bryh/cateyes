@@ -31,7 +31,7 @@ export default {
     },
     async created () {
         let result = await this.$http({
-            url: "/ce/ajax/comingList?ci=57"
+            url: "/ce/ajax/comingList?ci=57&token=-rLXk_r_28RGJdubtRdBUUhfKY0AAAAAWQcAACNwhhXHc0Anszdisjw_TohYZlN4sEO6OgxMVzCM71Lj2aa9kiamxFGVH2OO95lMRg"
         })
         this.cominglist = result.data.coming
         

@@ -6,6 +6,7 @@ import HomeComing from '@com/home/HomeComing.vue'
 import Cinema from './views/Cinema.vue'
 import User from './views/User.vue'
 import Detail from './views/Detail.vue'
+import Cities from './views/Cities.vue'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/detail/:id',
       name: 'detail',
       component: Detail
+    },
+    {
+      path: '/cities',
+      name: 'cities',
+      component: Cities
     }
   ]
 })

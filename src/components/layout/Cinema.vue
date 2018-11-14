@@ -3,26 +3,30 @@
     <div class="cinema-content" >
 	<div class="cinema-title-box ">
 		<div class="cinema-title ">
-            <span>星美国际影商城(海天欢乐购店)</span>
+            <span>{{cinema.nm}}</span>
             <span class="price-block">
-                <span class="price">19.9</span><span class="rmb">元起</span>
+                <span class="price">{{cinema.sellPrice}}</span><span class="rmb">元起</span>
             </span>
         </div>
         <div class="location-block ">
-            <div class="location">汉阳区汉阳大道582号海天欢乐购5楼</div>
-            <div class="distance">1077.4km</div>
+            <div class="location">{{cinema.addr}}</div>
+            <div class="distance">{{cinema.distance}}</div>
         </div>
 		
 		<div class="label-block">
-                <div class="allowRefund">退</div>
-                <div class="endorse">改签</div>
-                <div class="sell">折扣卡</div>
-                <div class="snack">小吃</div>
-                <div class="hallType">巨幕厅</div>
+                <div v-if="cinema.tag.allowRefund" class="allowRefund">退</div>
+                <div v-if="cinema.tag.endorse" class="endorse">改签</div>
+                <div v-if="cinema.tag.sell" class="sell">折扣卡</div>
+                <div v-if="cinema.tag.snack" class="snack">小吃</div>
+                <!-- <div class="hallType">巨幕厅</div> -->
         </div>
 	</div>
+    <div v-if="cinema.promotion.cardPromotionTag" class="start-card">
+        <img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAAAXNSR0IArs4c6QAAAgFJREFUSA3Nlz1LA0EQhmf3kouFEQwi+FEYQ+xEsImFoCDoL/CLaKd/QbC0sbCzFVuxsRS1jEVAsUqrIILRQAhaBGKMuawzwpGAm83mNhddCHfZnd3n3Z2ZuxsG2JI3YtQpVw6AiTkhYJj6/GqMwSsIdm312DsnMyzLCF79rGRAiIhfUOm6jL0FQvZU4Gfn0GU4KcINE5vjsc9LFXajE9kcfT7UDZaMQWwuG9Dpi/YyiIWZjqnSxrOAtWgANsYDysV1Bj0L0Flcx8ZoC1F0wf50UMo5fqjCY1FIxxo7jQSUHWgK+ag2YprfGwnIlQTQTk3a/46B2UEOIUu+v0gIIMgZLLTIZHJTOl+TL4K9ShckMc36Q+pc356QB6FLLJQFCqi4f39d2WoKLTy03ckg2OjAvcyXh9n1KX8eA0YC4n0MtuLoJru+o3bvjAS8o2vpfXCYsGEzZkFYHQ5SbcoglM5o6KQAoxhIDHBYiVqYERZcZB04f3aghNGv04wEuIDbQg3u8Lc4YsHymAVLeD17cuDypbWKjgggIZTpVwhM5x1YxzdlpaaXXB0T4J5GEbPy6F7/8WwUhC7U5OpZgIPfU5qnrNTn+UmoXLWNQc8n0AZDacqxUskpLXwcJDbHMinlI0O9NLI51WiAZZLa0odRZBKbU4FINRoDdtoNdxCDWMQk9jePWpE8hVOLbwAAAABJRU5ErkJggg==" alt="">
+        <span class="card">{{cinema.promotion.cardPromotionTag}}</span>
+    </div>
 
-<div class="near-show-block" >
+<div v-if="cinema.aa" class="near-show-block" >
 	<span>近期场次：</span>
 	<span class="time-line">21:10 </span>	
 </div>
@@ -33,7 +37,7 @@
 
 <script>
 export default {
-    
+    props: ["cinema"]
 }
 </script>
 
@@ -116,6 +120,18 @@ export default {
                             border-radius: 2px;
                             font-size: .3rem;
                     }
+            }
+        }
+        .start-card{
+            color: #999;
+            img{
+                width: .4rem;
+                margin-right: .133333rem;
+                
+            }
+            span{
+                height: 100%;
+                line-height: 60%;
             }
         }
         .near-show-block{

@@ -13,8 +13,16 @@ module.exports = {
               pathRewrite: {
                 '^/ce': ''
               }
-            }
-          }
+            },
+            '/bd': {
+                target: 'http://api.map.baidu.com/',
+                changeOrigin: true,
+                pathRewrite: {
+                  '^/bd': ''
+                }
+              }
+          },
+          
     },
     
     chainWebpack (config)  {
@@ -26,6 +34,7 @@ module.exports = {
             .set("@libs", resolve("src/libs"))
             .set("@css", resolve("src/css"))
             .set("@utils", resolve("src/utils"))
+            .set("@store", resolve("src/store"))
 
     }
  }

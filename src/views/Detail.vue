@@ -2,14 +2,16 @@
     <div class="Detail">
         <app-header></app-header>
         <div class="detail-bg-fillter"></div>
-        <div class="detail-info-bg" style="background-image: url(//p0.meituan.net/71.100/movie/363e3a7e614d29b2847ff4e62afcd3f42168651.jpg)"></div>
+        <div class="detail-info-bg" :style= "bgimg"></div>
+        
         <detail-info
         :movieinfo = "moviedetail"
         ></detail-info>
+        
         <detail-showdays></detail-showdays>
         <fillter-box></fillter-box>
         <div class="cinema-list">
-           <cinema></cinema>
+           <!-- <cinema></cinema> -->
         </div>
     </div>    
 </template>
@@ -24,6 +26,7 @@ export default {
     data () {
         return {
             moviedetail:{},
+            bgimg: "",
             cinema: [],
         }
     },
@@ -34,6 +37,7 @@ export default {
          FillterBox,
          Cinema
     },
+    
     async created () {
         var _id = this.$route.params.id
         let result = await this.$http({
@@ -45,7 +49,9 @@ export default {
         console.log(result);
         this.moviedetail = result.data.detailMovie
         console.log(this.moviedetail);
-        
+        let newUrl= this. moviedetail.img.replace(/w.h/, "71.100") 
+        this.bgimg = "background-image: url("+ newUrl+")"
+        this.moviedetail.img = this. moviedetail.img.replace(/w.h/, "148.208") 
     }
 }
 </script>
@@ -59,7 +65,7 @@ export default {
         height: 5.013333rem;
         width: 100%;
         position: fixed;
-        top:1.346667rem;
+        // top:1.346667rem;
     }
     .detail-info-bg{
          filter: blur(0.6rem);

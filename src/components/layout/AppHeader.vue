@@ -6,12 +6,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { CHANGE_CITY } from '@/store/chunks/mutation-types'
 export default {
     data () {   
         return {
                isIconShow: false,
                title: "猫眼电影"
         }
+    },
+     beforeCreate () {
+         if( localStorage.cities ){
+             this.$store.state.chunks.cities = JSON.parse(localStorage.cities)
+             this.$store.state.chunks.city = JSON.parse(localStorage.city)
+         }else{
+             this.$store.dispatch( { type: 'chunks/getPosition' } )
+         }
+
+        
     },
     created () { 
         this.title = this.getTitle()
@@ -20,6 +32,9 @@ export default {
             next(); 
         })
     },
+    computed: mapState(['chunks']),
+       
+    
     methods: {
         getTitle (to){
             let _to = to || this.$route
@@ -30,6 +45,7 @@ export default {
                 case "detail": this.isIconShow = true;  return _to.query.name; break;
                 case "cinema": this.isIconShow = false; return "影院"; break;
                 case "user": this.isIconShow = true; return "猫眼电影"; break;
+                case "cities": this.isIconShow = true; return "城市选择"; break;
             }
         },
         back (){

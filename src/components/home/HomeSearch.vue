@@ -1,8 +1,8 @@
 <template>
-    <div class="HomeSearch">
-        <span class="location">北京
+    <div  class="HomeSearch">
+        <router-link tag="div" :to="{ name: 'cities' }" class="location">{{city.cityNm}}
             <i class="fa fa-angle-down"></i>
-        </span>
+        </router-link>
         <span class="isnow-wrapper">
             <router-link tag="span" :to="{ name: 'now'}"  class="isnow">正在热映</router-link>
             <router-link tag="span" :to="{ name: 'coming'}"  class="isnow">即将上映</router-link>
@@ -15,7 +15,14 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    computed: {
+      city () {
+        return this.$store.state.chunks.city
+      }
+    }
+
+};
 </script>
 
 <style lang="scss">
