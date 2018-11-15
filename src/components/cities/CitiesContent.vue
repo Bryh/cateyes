@@ -1,6 +1,8 @@
 <template>
     <div class="CitiesContent">
+        
         <mt-index-list>
+            <cities-item></cities-item>
             <mt-index-section 
                 v-for = "(value, key) in citiesarr"
                 :key = "key"
@@ -23,6 +25,7 @@ import { IndexList, IndexSection, Cell } from 'mint-ui';
 import CitiesItem from "./CitiesItem.vue"
 import { CHANGE_CITY } from "@store/chunks/mutation-types"
 import { mapMutations } from 'vuex'
+
 export default {
 
     components: {
@@ -63,7 +66,7 @@ export default {
                     cityNm: nm
                 }
             } )
-            this.$router.push( { name: "now" } )
+            window.history.go(-1)
         }
     }
     

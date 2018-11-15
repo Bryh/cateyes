@@ -4,7 +4,7 @@
 	<div class="cinema-title-box ">
 		<div class="cinema-title ">
             <span>{{cinema.nm}}</span>
-            <span class="price-block">
+            <span v-if="cinema.sellPrice" class="price-block">
                 <span class="price">{{cinema.sellPrice}}</span><span class="rmb">元起</span>
             </span>
         </div>

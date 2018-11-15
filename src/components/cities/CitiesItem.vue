@@ -8,7 +8,7 @@
                 <span class="active-city">北京</span>
             </div>
         </section>
-        <section class="city-list-container">
+        <section class="city-list-container" style="margin-top:0">
             <div class="city-title">
                 热门城市
             </div>
@@ -38,8 +38,9 @@ export default {
 
 <style lang="scss">
 .CitiesItem{
-    margin-top: 1.346667rem;
+    // 
     .city-list-container{
+        margin-top: 1.346667rem;
         display: block;
         background-color: #ebebeb;
         font-size: .373333rem;
