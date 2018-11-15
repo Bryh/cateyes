@@ -44,8 +44,9 @@ export default {
                 case "coming": this.isIconShow = false; return "猫眼电影"; break; 
                 case "detail": this.isIconShow = true;  return _to.query.name; break;
                 case "cinema": this.isIconShow = false; return "影院"; break;
-                case "user": this.isIconShow = true; return "猫眼电影"; break;
+                case "user": this.isIconShow = false; return "我的"; break;
                 case "cities": this.isIconShow = true; return "城市选择"; break;
+                case "login": this.isIconShow = true; return "猫眼注册"; break;
             }
         },
         back (){
@@ -71,7 +72,7 @@ export default {
         margin-top: .213333rem;
     }
     .title{
-        margin-left: 1.066667rem;
+        margin-left: 1.466667rem;
         width: 7.2rem;
         height: .8rem;
         text-align: center;

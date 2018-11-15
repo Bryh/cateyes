@@ -18,7 +18,10 @@
                 <div v-if="cinema.tag.endorse" class="endorse">改签</div>
                 <div v-if="cinema.tag.sell" class="sell">折扣卡</div>
                 <div v-if="cinema.tag.snack" class="snack">小吃</div>
-                <!-- <div class="hallType">巨幕厅</div> -->
+                <div v-if="cinema.tag.hallType" 
+                v-for= "hall in cinema.tag.hallTypeVOList "
+                :key = "hall.name"
+                class="hallType">{{hall.name}}</div>
         </div>
 	</div>
     <div v-if="cinema.promotion.cardPromotionTag" class="start-card">
@@ -26,9 +29,9 @@
         <span class="card">{{cinema.promotion.cardPromotionTag}}</span>
     </div>
 
-<div v-if="cinema.aa" class="near-show-block" >
+<div v-if="cinema.showTimes" class="near-show-block" >
 	<span>近期场次：</span>
-	<span class="time-line">21:10 </span>	
+	<span class="time-line">{{cinema.showTimes}} </span>	
 </div>
 
 </div>
@@ -45,7 +48,7 @@ export default {
 .Cinema{
     .cinema-content{
         padding: .346667rem .4rem .346667rem 0;
-        margin-left: .4rem;
+        padding-left: .4rem;
         background-color: #fff;
         position: relative;
         overflow: hidden;

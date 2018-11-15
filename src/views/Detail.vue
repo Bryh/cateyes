@@ -8,10 +8,16 @@
         :movieinfo = "moviedetail"
         ></detail-info>
         
-        <detail-showdays></detail-showdays>
+        <detail-showdays
+        :showDays = "showDays"
+        ></detail-showdays>
         <fillter-box></fillter-box>
         <div class="cinema-list">
-           <!-- <cinema></cinema> -->
+           <cinema
+            v-for= "cinema in cinemas"
+            :key = "cinema.id"
+            :cinema = "cinema"
+           ></cinema>
         </div>
     </div>    
 </template>
@@ -27,7 +33,8 @@ export default {
         return {
             moviedetail:{},
             bgimg: "",
-            cinema: [],
+            cinemas: [],
+            showDays: []
         }
     },
     components: {
@@ -40,19 +47,46 @@ export default {
     
     async created () {
         var _id = this.$route.params.id
+        var _cityId = this.$store.state.chunks.city.cityId
+        //获取电影信息
         let result = await this.$http({
             url: "/ce/ajax/detailmovie",
             params:{
                movieId: _id
             }
         })
-        console.log(result);
         this.moviedetail = result.data.detailMovie
-        console.log(this.moviedetail);
         let newUrl= this. moviedetail.img.replace(/w.h/, "71.100") 
         this.bgimg = "background-image: url("+ newUrl+")"
         this.moviedetail.img = this. moviedetail.img.replace(/w.h/, "148.208") 
+        let cinemaRes = await this.$http({
+        url: "/ce/ajax/movie?forceUpdate="+Date.now() ,
+        method: "POST",
+        data: {
+            movieId: _id,
+            day: 2018-11-15,
+            offset: 0,
+            limit: 20,
+            districtId: -1,
+            lineId: -1,
+            hallType: -1,
+            brandId: -1,
+            serviceId: -1,
+            areaId: -1,
+            stationId: -1,  
+            updateShowDay: true,
+            reqId: 1542282420189,
+            cityId: _cityId
+        }
+
+        })
+        
+        this.cinemas = cinemaRes.data.cinemas
+        this.showDays = cinemaRes.data.showDays.dates
+        
     }
+
+   
 }
 </script>
 

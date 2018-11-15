@@ -7,6 +7,11 @@ import Cinema from './views/Cinema.vue'
 import User from './views/User.vue'
 import Detail from './views/Detail.vue'
 import Cities from './views/Cities.vue'
+import Login from './views/Login.vue'
+
+
+import auth from "@utils/auth"
+
 
 Vue.use(Router)
 
@@ -41,7 +46,11 @@ export default new Router({
     {
       path: '/user',
       name: 'user',
-      component: User
+      component: User,
+      beforeEnter (to,from,next)  {
+        let result = auth.authLogin()
+        next ( result.id? true : { name: 'login' } )
+      }
     },
     {
       path: '/detail/:id',
@@ -52,6 +61,12 @@ export default new Router({
       path: '/cities',
       name: 'cities',
       component: Cities
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+
     }
   ]
 })
