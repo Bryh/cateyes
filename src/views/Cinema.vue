@@ -39,7 +39,7 @@ import AppNav from "@com/layout/AppNav.vue"
 import Cinema from "@com/layout/Cinema.vue"
 import FillterBox from "@com/layout/FillterBox.vue"
 import Vue from "vue"
-import { InfiniteScroll,  Toast } from 'mint-ui';
+import { InfiniteScroll,  Toast, Indicator } from 'mint-ui';
 Vue.use(InfiniteScroll);
 export default {
     data () {
@@ -47,7 +47,7 @@ export default {
             cinemas: [],
             ioffset: 0,
             isloading: false,
-            cityId: this.$store.state.chunks.city.cityId
+          
         }
     },
     components: {
@@ -56,13 +56,17 @@ export default {
     FillterBox
   },
   async created () {
-      
+      Indicator.open({
+        text: 'Loading...',
+        spinnerType: 'fading-circle'
+    });
       let result = await this.$http({
           url: "/ce/ajax/cinemaList",
           params: {
-              cityId: this.cityId
+              cityId: this.$store.state.chunks.city.cityId
           }
       })
+      Indicator.close()
     //   console.log(result);
       this.cinemas = result.data.cinemas
   },

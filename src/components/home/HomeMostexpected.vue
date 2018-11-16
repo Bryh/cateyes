@@ -26,6 +26,7 @@ export default {
         }
     },
     async created(){
+        
         let result = await this.$http({
             url: "/ce/ajax/mostExpected?ci=57&limit=10&offset=0"
         })

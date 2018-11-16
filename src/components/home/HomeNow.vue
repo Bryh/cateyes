@@ -14,17 +14,26 @@
 <script>
 import MovieItem from "./MovieItem.vue"
 import BetterScroll from "better-scroll"
+import {  Indicator } from 'mint-ui';
 export default {
     data (){
         return {
-            movies: []
+            movies: [],
+            
         }
     },
     async created () {
+         Indicator.open({
+        text: 'Loading...',
+        spinnerType: 'fading-circle'
+    });
         let result = await this.$http({
-            url: "/ce/ajax/movieOnInfoList"
+            url: "/ce/ajax/movieOnInfoList",
+            params: {
+                cityId: this.$store.state.chunks.city.cityId
+            }
         })
-        
+        Indicator.close()
         this.movies = result.data.movieList  
         
         
