@@ -51,7 +51,7 @@ export default {
 .HomeNow{
     margin-top: 2.52rem;
     width: 100%;
-    height: 18.613333rem;
+    height: 15rem;
     overflow: hidden;
     .movies-list{
         box-sizing: border-box;

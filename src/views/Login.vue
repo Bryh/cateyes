@@ -8,7 +8,7 @@
             
                 <div class="phone-number">
                     <input type="text"  v-model= "phone" name="phone-number" id="" placeholder="请输入手机号"> 
-                    <button type="button" class="set-code" @click= "sendCode"> 发送验证码</button>
+                    <button type="button" class="set-code" @click= "sendCode">{{canSend? "发送验证码" : "重发" + resendTime + "s" }} </button>
                 </div>
                 <div class="code">
                     <input type="text" v-model= "code" placeholder="请输入验证码">
@@ -31,20 +31,29 @@
 export default {
     data () {
         return {
-            phone: "17694956282",
-            code: ""
+            phone: "",
+            code: "",
+            isSend: false,
+            resendTime: 60,
+            canSend:true
         }
     },
     methods: {
         async sendCode () {
-            let result = await this.$http({
+            this.canSend = false
+            this.handelResendTime()
+            if(!this.isSend){
+                this.isSend = true
+                let result = await this.$http({
                 url: "/mz/v4/api/code?__t="+Date.now(),
                 method: "POST",
                 data: {
                     mobile: this.phone,
                     type: "2"
                 }
-            })
+             })
+             this.isSend  = false
+            }
             console.log(result);
             
         },
@@ -63,6 +72,17 @@ export default {
                 localStorage.setItem("userinfo",JSON.stringify( result.data.data.data))
                 this.$router.replace({name: 'user'})
             }
+            
+        },
+        handelResendTime () {
+           let timer =  setInterval (() =>{
+                this.resendTime -= 1
+                if ( this.resendTime == 0 ){
+                this.canSend = true
+                this.resendTime = 60 
+                clearInterval(timer)
+            }
+            },1000)
             
         }
     }

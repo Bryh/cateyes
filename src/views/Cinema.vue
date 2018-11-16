@@ -25,6 +25,10 @@
             :cinema = "cinema"
             ></cinema>
         </section>
+         <div id= "backTOTop" v-back>
+            <span class="fa fa-angle-up fa-2x"></span>
+        </div>
+
         
         <app-nav></app-nav>
     </div>
@@ -143,6 +147,17 @@ export default {
                                 margin-right: 4px;
                         }
                 }
+        }
+        #backTOTop{
+            height: .8rem;
+            width: .8rem;
+            border-radius: .4rem;
+            background: #e54847;
+            position: fixed;
+            bottom: 2rem;
+            right: 1rem;
+            text-align: center;
+            color: #ccc;
         }
     }
 </style>

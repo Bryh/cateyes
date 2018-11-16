@@ -18,6 +18,10 @@ import 'swiper/dist/css/swiper.css'
 
 import 'mint-ui/lib/style.css'
 
+import myUi from "../myUi"
+
+Vue.use(myUi)
+
  
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
